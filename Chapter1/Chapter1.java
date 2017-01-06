@@ -44,4 +44,29 @@ public class Chapter1 {
     }
   }
 
+  public static boolean isPermutationOfPalindrome(String phrase) {
+    final int charRange = ('z' - 'a') + 1;
+    String lowercasePhrase = phrase.toLowerCase();
+    int[] charFrequency = new int[charRange];
+
+    for (int i = 0; i < phrase.length(); i++) {
+      char c = lowercasePhrase.charAt(i);
+      if(c <= 'z' && c >= 'a') {
+        charFrequency['z' - c]++;
+      }
+    }
+
+    int oddCount = 0;
+    for(int i = 0; i < charRange; i++) {
+        if(charFrequency[i] % 2 != 0) {
+          oddCount++;
+        }
+    }
+
+    if(oddCount > 1) {
+      return false;
+    }
+    return true;
+  }
+
 }
