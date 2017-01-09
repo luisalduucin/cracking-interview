@@ -7,7 +7,10 @@ public class Chapter1 {
     Excercise 1.2 -> arePermutations
     Excercise 1.3 -> URLify
     Excercise 1.4 -> isPermutationOfPalindrome
+<<<<<<< HEAD
     Excercise 1.5 -> oneEditAway
+=======
+>>>>>>> e79b85e028dbda4b4ea3a189a94486f3760382e4
   */
 
   public static boolean hasUniqueChars(String word) {
