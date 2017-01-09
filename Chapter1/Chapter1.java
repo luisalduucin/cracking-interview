@@ -6,6 +6,8 @@ public class Chapter1 {
     Excercise 1.1 -> hasUniqueChars
     Excercise 1.2 -> arePermutations
     Excercise 1.3 -> URLify
+    Excercise 1.4 -> isPermutationOfPalindrome
+    Excercise 1.5 -> oneEditAway
   */
 
   public static boolean hasUniqueChars(String word) {
@@ -65,6 +67,53 @@ public class Chapter1 {
 
     if(oddCount > 1) {
       return false;
+    }
+    return true;
+  }
+
+  public static boolean oneEditAway(String word1, String word2) {
+    int w1length = word1.length();
+    int w2length = word2.length();
+
+    if(word1.equals(word2)) return true;
+
+    if(w1length == w2length) {
+      return oneEditReplace(word1, word2);
+    } else if(w1length < w2length) {
+      return oneEditInsert(word1, word2);
+    } else {
+      return oneEditInsert(word2, word1);
+    }
+  }
+
+  private static boolean oneEditReplace(String word1, String word2) {
+    int diferences = 0;
+    for(int i = 0; i < word1.length(); i++) {
+      if(word1.charAt(i) != word2.charAt(i)) {
+        diferences++;
+      }
+      if(diferences > 1){
+        return false;
+      }
+    }
+    return true;
+  }
+
+  private static boolean oneEditInsert(String word1, String word2) {
+    int indexWord1 = 0;
+    int indexWord2 = 0;
+    int diferences = 0;
+    while(indexWord1 < word1.length() && indexWord2 < word2.length()) {
+      if(word1.charAt(indexWord1) != word2.charAt(indexWord2)) {
+        diferences++;
+        indexWord2++;
+      } else {
+        indexWord1++;
+        indexWord2++;
+      }
+      if(diferences > 1) {
+        return false;
+      }
     }
     return true;
   }
